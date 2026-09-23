@@ -1,0 +1,38 @@
+name: Operations Reusable
+
+on:
+
+  workflow_call:
+    input:
+      project:
+        required: true
+        type: string
+        description: "Project name"
+      environment:
+        required: true
+        type: string
+        description: "Environment name [dev|pre]"
+      operation:
+        required: true
+        type: string
+
+jobs:
+  run_operation:
+    name: ${{ inputs.project }} ${{ inputs.enviroment }}
+    runs-on: self-hosted
+    environment: ${{ inputs.environment == 'dev' && 'certification' || 'preproduction' }}
+    steps:
+
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Resolve project variables
+        id: vars
+        shell: bash
+        run: |
+          PROJECT_UP=$(printf '%s' "${{ inputs.projects }}" | tr '[:lower:]' '[:upper:]')
+          ENV_UP=$(printf '%s' "${{ inputs.environment }}" | tr '[:lower:]' '[:upper:]')
+          echo "project_up=$PROJECT_UP" >> "$GITGUB_OUTPUT"
+          echo "env_up=$ENV_UP" >> "$GITGUB_OUTPUT"
+          echo "label=$PROJECT_UP $ENV_UP" >> "$GITGUB_OUTPUT"
+
