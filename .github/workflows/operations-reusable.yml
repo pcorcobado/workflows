@@ -3,7 +3,7 @@ name: Operations Reusable
 on:
 
   workflow_call:
-    input:
+    inputs:
       project:
         required: true
         type: string
