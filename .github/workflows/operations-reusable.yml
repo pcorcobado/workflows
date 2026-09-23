@@ -24,15 +24,15 @@ jobs:
     steps:
 
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Resolve project variables
         id: vars
         shell: bash
         run: |
           PROJECT_UP=$(printf '%s' "${{ inputs.projects }}" | tr '[:lower:]' '[:upper:]')
-#          ENV_UP=$(printf '%s' "${{ inputs.environment }}" | tr '[:lower:]' '[:upper:]')
-#          echo "project_up=$PROJECT_UP" >> "$GITGUB_OUTPUT"
-#          echo "env_up=$ENV_UP" >> "$GITGUB_OUTPUT"
-#          echo "label=$PROJECT_UP $ENV_UP" >> "$GITGUB_OUTPUT"
+          ENV_UP=$(printf '%s' "${{ inputs.environment }}" | tr '[:lower:]' '[:upper:]')
+          echo "project_up=$PROJECT_UP" >> "$GITHUB_OUTPUT"
+          echo "env_up=$ENV_UP" >> "$GITHUB_OUTPUT"
+          echo "label=$PROJECT_UP $ENV_UP" >> "$GITHUB_OUTPUT"
 
