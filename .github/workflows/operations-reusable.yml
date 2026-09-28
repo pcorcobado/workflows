@@ -45,7 +45,7 @@ jobs:
           assume_role: ${{ secrets.ROLE }}
           session_name: ${{ screts.SESSION_NAME }}
           
-      - name: Turn ${{ inputs.operation }} ${{ inputs.project }} ${{ inputs.enviroment }}
+      - name: Turn ${{ inputs.operation }} ${{ inputs.project }} ${{ inputs.environment }}
         id: call_turn_operation
         uses: pcorcobado/actions/actions/operations@v1
         with:
