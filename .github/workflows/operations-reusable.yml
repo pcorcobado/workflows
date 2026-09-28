@@ -47,7 +47,7 @@ jobs:
           
       - name: Turn ${{ inputs.operation }} ${{ inputs.project }} ${{ inputs.enviroment }}
         id: call_turn_operation
-        uses: pcorcobado/actions/actions/operations@main
+        uses: pcorcobado/actions/actions/operations@v1
         with:
           operation: ${{ inputs.operation }}
           environment: ${{ inputs.environment }}
