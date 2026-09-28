@@ -37,13 +37,13 @@ jobs:
           echo "env_up=$ENV_UP" >> "$GITHUB_OUTPUT"
           echo "label=$PROJECT_UP $ENV_UP" >> "$GITHUB_OUTPUT"
 
-    #  - name: AWS Login Project Account
-    #    uses: pcorcobado/actions/actions/AWSlogin@main
-    #    with:
-    #      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
-    #      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS }}
-    #      assume_role: ${{ secrets.ROLE }}
-    #      session_name: ${{ screts.SESSION_NAME }}
+      - name: AWS Login Project Account
+        uses: pcorcobado/actions/actions/AWSlogin@main
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS }}
+          assume_role: ${{ secrets.ROLE }}
+          session_name: ${{ screts.SESSION_NAME }}
           
       - name: Turn ${{ inputs.operation }} ${{ inputs.project }} ${{ inputs.enviroment }}
         id: call_turn_operation
