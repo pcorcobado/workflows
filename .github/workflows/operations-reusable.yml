@@ -43,7 +43,7 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS }}
           assume_role: ${{ secrets.ROLE }}
-          session_name: ${{ screts.SESSION_NAME }}
+          session_name: ${{ secrets.SESSION_NAME }}
           
       - name: Turn ${{ inputs.operation }} ${{ inputs.project }} ${{ inputs.environment }}
         id: call_turn_operation
