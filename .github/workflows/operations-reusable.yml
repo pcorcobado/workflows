@@ -38,7 +38,7 @@ jobs:
           echo "label=$PROJECT_UP $ENV_UP" >> "$GITHUB_OUTPUT"
 
       - name: AWS Login Project Account
-        uses: pcorcobado/actions/actions/AWSlogin@main
+        uses: pcorcobado/actions/actions/AWSlogin@v1
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS }}
