@@ -1,7 +1,6 @@
 name: Operations Reusable
 
 on:
-
   workflow_call:
     inputs:
       project:
