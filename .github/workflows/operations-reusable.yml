@@ -37,13 +37,17 @@ jobs:
           echo "label=$PROJECT_UP $ENV_UP" >> "$GITHUB_OUTPUT"
 
       - name: AWS Login Project Account
-        uses: pcorcobado/actions/actions/AWSlogin@v1
+        uses: aws-actions/configure-aws-credentials@v5
         with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS }}
-          assume_role: ${{ secrets.ROLE }}
-          session_name: ${{ secrets.SESSION_NAME }}
-          
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+          role-session-name: github-oidc-${{ inputs.environment }}
+
+      - name: Verify AWS identity
+        run: |
+          echo "GitHub Environment: ${{ inputs.environment }}"
+          aws sts get-caller-identity          
+
       - name: Turn ${{ inputs.operation }} ${{ inputs.project }} ${{ inputs.environment }}
         id: call_turn_operation
         uses: pcorcobado/actions/actions/operations@v1
