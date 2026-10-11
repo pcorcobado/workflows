@@ -15,6 +15,10 @@ on:
         required: true
         type: string
 
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   run_operation:
     name: ${{ inputs.project }} ${{ inputs.enviroment }}
